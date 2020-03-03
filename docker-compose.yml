@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  db:
+    image: postgres:12-alpine
+    environment:
+      POSTGRES_USER: admin_01
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: sample_db_01
+    volumes:
+      - "example.env.data:/var/lib/postgresql/data"
+    ports:
+      - "5434:5432"
+    tty: true
+  ruby-migration:
+    build: ./ruby/migration
+    environment:
+      GITHUB_USER_NAME: ${GITHUB_USER_NAME}
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+      GITHUB_EMAIL: ${GITHUB_EMAIL}
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: admin_01
+      DB_PASSWORD: password
+      DB_NAME: sample_db_02
+    volumes:
+      - "example.ruby.migration:/repo"
+    tty: true
+volumes:
+  example.env.data:
+  example.ruby.migration:

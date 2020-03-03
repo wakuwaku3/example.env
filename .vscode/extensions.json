@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "DavidAnson.vscode-markdownlint",
+    "esbenp.prettier-vscode",
+    "henriiik.docker-linter",
+    "marquesmps.dockerfile-validator",
+    "ms-azuretools.vscode-docker",
+    "ms-vscode-remote.remote-containers",
+    "p1c2u.docker-compose"
+  ]
+}
