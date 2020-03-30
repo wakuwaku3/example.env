@@ -1,19 +1,37 @@
 version: "3"
 
 services:
-  db:
-    image: postgres:12-alpine
+  csharp:
+    build: ./csharp/general
     environment:
-      POSTGRES_USER: admin_01
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: sample_db_01
-    volumes:
-      - "example.env.data:/var/lib/postgresql/data"
-    ports:
-      - "5434:5432"
+      GITHUB_USER_NAME: ${GITHUB_USER_NAME}
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+      GITHUB_EMAIL: ${GITHUB_EMAIL}
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: admin_01
+      DB_PASSWORD: password
+      DB_NAME: sample_db_02
     tty: true
-  ruby-migration:
-    build: ./ruby/migration
+    volumes:
+      - "example.csharp.general:/root"
+  golang:
+    build: ./golang/general
+    environment:
+      GITHUB_USER_NAME: ${GITHUB_USER_NAME}
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+      GITHUB_EMAIL: ${GITHUB_EMAIL}
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: admin_01
+      DB_PASSWORD: password
+      DB_NAME: sample_db_02
+    tty: true
+    volumes:
+      - "example.golang.general:/root"
+      - "example.golang.general.go1.14:/go"
+  ruby:
+    build: ./ruby/general
     environment:
       GITHUB_USER_NAME: ${GITHUB_USER_NAME}
       GITHUB_TOKEN: ${GITHUB_TOKEN}
@@ -24,8 +42,14 @@ services:
       DB_PASSWORD: password
       DB_NAME: sample_db_02
     volumes:
-      - "example.ruby.migration:/repo"
+      - "example.ruby.general:/root"
     tty: true
 volumes:
-  example.env.data:
-  example.ruby.migration:
+  example.csharp.general:
+  example.golang.general:
+  example.golang.general.go1.14:
+  example.ruby.general:
+networks:
+  default:
+    external:
+      name: example-env-network
