@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  server:
+    build: ./golang/vapid
+    environment:
+      GITHUB_USER_NAME: ${GITHUB_USER_NAME}
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+      GITHUB_EMAIL: ${GITHUB_EMAIL}
+    tty: true
+    volumes:
+      - "example.vapid.go:/repo"
+      - "example.vapid.go.go1.14:/go"
+  web:
+    build: ./js/vapid
+    environment:
+      GITHUB_USER_NAME: ${GITHUB_USER_NAME}
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+      GITHUB_EMAIL: ${GITHUB_EMAIL}
+    tty: true
+    volumes:
+      - "example.vapid.web:/repo"
+volumes:
+  example.vapid.web:
+  example.vapid.go:
+  example.vapid.go.go1.14:
+networks:
+  default:
+    external:
+      name: example-env-network

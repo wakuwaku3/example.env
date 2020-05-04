@@ -15,6 +15,20 @@ services:
     tty: true
     volumes:
       - "example.csharp.general:/root"
+  js:
+    build: ./js/general
+    environment:
+      GITHUB_USER_NAME: ${GITHUB_USER_NAME}
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+      GITHUB_EMAIL: ${GITHUB_EMAIL}
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: admin_01
+      DB_PASSWORD: password
+      DB_NAME: sample_db_02
+    tty: true
+    volumes:
+      - "example.js.general:/root"
   golang:
     build: ./golang/general
     environment:
@@ -46,6 +60,7 @@ services:
     tty: true
 volumes:
   example.csharp.general:
+  example.js.general:
   example.golang.general:
   example.golang.general.go1.14:
   example.ruby.general:
