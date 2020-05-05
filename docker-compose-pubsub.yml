@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  pubsub-aws:
+    build: ./aws/pubsub
+    environment:
+      GITHUB_USER_NAME: ${GITHUB_USER_NAME}
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+      GITHUB_EMAIL: ${GITHUB_EMAIL}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
+      AWS_PREFIX: ${AWS_PREFIX}
+      AWS_NEW_USER_PASSWORD: ${AWS_NEW_USER_PASSWORD}
+    tty: true
+    volumes:
+      - "example.pubsub.aws:/repo"
+volumes:
+  example.pubsub.aws:
+networks:
+  default:
+    external:
+      name: example-env-network

@@ -19,6 +19,10 @@ up-vapid:
 	make init
 	docker-compose -f docker-compose-vapid.yml up
 
+up-pubsub:
+	make init
+	docker-compose -f docker-compose-pubsub.yml up
+
 build:
 	make init
 	docker-compose up --build
@@ -31,6 +35,10 @@ build-vapid:
 	make init
 	docker-compose -f docker-compose-vapid.yml up  --build
 
+build-pubsub:
+	make init
+	docker-compose -f docker-compose-pubsub.yml up  --build
+
 down:
 	docker-compose down
 
@@ -39,3 +47,6 @@ down-db:
 
 down-vapid:
 	docker-compose -f docker-compose-vapid.yml down
+
+down-pubsub:
+	docker-compose -f docker-compose-pubsub.yml down
