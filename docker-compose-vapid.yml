@@ -7,19 +7,28 @@ services:
       GITHUB_USER_NAME: ${GITHUB_USER_NAME}
       GITHUB_TOKEN: ${GITHUB_TOKEN}
       GITHUB_EMAIL: ${GITHUB_EMAIL}
+      VAPID_PUBLIC_KEY: ${VAPID_PUBLIC_KEY}
+      VAPID_PRIVATE_KEY: ${VAPID_PRIVATE_KEY}
     tty: true
     volumes:
       - "example.vapid.go:/repo"
       - "example.vapid.go.go1.14:/go"
+    ports:
+      - "54000:8080"
   web:
     build: ./js/vapid
     environment:
       GITHUB_USER_NAME: ${GITHUB_USER_NAME}
       GITHUB_TOKEN: ${GITHUB_TOKEN}
       GITHUB_EMAIL: ${GITHUB_EMAIL}
+      REACT_APP_API_URL: "http://127.0.0.1:54000"
+      REACT_APP_BASE_URL: "http://127.0.0.1:54010"
+      REACT_APP_VAPID_PUBLIC_KEY: ${VAPID_PUBLIC_KEY}
     tty: true
     volumes:
       - "example.vapid.web:/repo"
+    ports:
+      - "54010:3000"
 volumes:
   example.vapid.web:
   example.vapid.go:
