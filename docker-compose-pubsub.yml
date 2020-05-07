@@ -15,8 +15,24 @@ services:
     tty: true
     volumes:
       - "example.pubsub.aws:/repo"
+  pubsub-go:
+    build: ./golang/pubsub
+    environment:
+      GITHUB_USER_NAME: ${GITHUB_USER_NAME}
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+      GITHUB_EMAIL: ${GITHUB_EMAIL}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
+      AWS_PREFIX: ${AWS_PREFIX}
+    tty: true
+    volumes:
+      - "example.pubsub.go:/repo"
+      - "example.pubsub.go.go1.14:/go"
 volumes:
   example.pubsub.aws:
+  example.pubsub.go:
+  example.pubsub.go.go1.14:
 networks:
   default:
     external:
