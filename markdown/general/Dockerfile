@@ -1,11 +1,16 @@
-FROM buildpack-deps:buster-scm
+FROM node:12-buster
 
-LABEL Name="example.markdown.general"
+LABEL Name="example.js.general"
 LABEL Version="1.0.0"
 
 ENV GITHUB_USER_NAME=GITHUB-user-name
 ENV GITHUB_TOKEN=GITHUB-token
 ENV GITHUB_EMAIL=GITHUB-email
+ENV DB_HOST=db
+ENV DB_PORT=5432
+ENV DB_USER=admin_01
+ENV DB_PASSWORD=password
+ENV DB_NAME=sample_db_01
 
 WORKDIR /
 ADD ./init.sh init.sh

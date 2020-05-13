@@ -58,12 +58,22 @@ services:
     volumes:
       - "example.ruby.general:/root"
     tty: true
+  markdown:
+    build: ./markdown/general
+    environment:
+      GITHUB_USER_NAME: ${GITHUB_USER_NAME}
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+      GITHUB_EMAIL: ${GITHUB_EMAIL}
+    volumes:
+      - "example.markdown.general:/root"
+    tty: true
 volumes:
   example.csharp.general:
   example.js.general:
   example.golang.general:
   example.golang.general.go1.14:
   example.ruby.general:
+  example.markdown.general:
 networks:
   default:
     external:
