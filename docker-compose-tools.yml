@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  refpkg:
+    build: ./golang/refpkg
+    environment:
+      GITHUB_USER_NAME: ${GITHUB_USER_NAME}
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+      GITHUB_EMAIL: ${GITHUB_EMAIL}
+    tty: true
+    volumes:
+      - "example.golang.refpkg:/root"
+      - "example.golang.refpkg.go1.14:/go"
+volumes:
+  example.golang.refpkg:
+  example.golang.refpkg.go1.14:
+networks:
+  default:
+    external:
+      name: example-env-network

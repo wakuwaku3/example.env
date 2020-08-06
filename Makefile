@@ -23,6 +23,10 @@ up-pubsub:
 	make init
 	docker-compose -f docker-compose-pubsub.yml up
 
+up-tools:
+	make init
+	docker-compose -f docker-compose-tools.yml up
+
 build:
 	make init
 	docker-compose up --build
@@ -39,6 +43,10 @@ build-pubsub:
 	make init
 	docker-compose -f docker-compose-pubsub.yml up  --build
 
+build-tools:
+	make init
+	docker-compose -f docker-compose-tools.yml up  --build
+
 down:
 	docker-compose down
 
@@ -50,3 +58,6 @@ down-vapid:
 
 down-pubsub:
 	docker-compose -f docker-compose-pubsub.yml down
+
+down-tools:
+	docker-compose -f docker-compose-tools.yml down
