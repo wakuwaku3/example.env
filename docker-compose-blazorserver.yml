@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  blazorserver:
+    build: ./csharp/blazorserver
+    environment:
+      GITHUB_USER_NAME: ${GITHUB_USER_NAME}
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+      GITHUB_EMAIL: ${GITHUB_EMAIL}
+    tty: true
+    volumes:
+      - "example.blazorserver.csharp:/repo"
+    ports:
+      - "54100:8080"
+volumes:
+  example.blazorserver.csharp:
+networks:
+  default:
+    external:
+      name: example-env-network

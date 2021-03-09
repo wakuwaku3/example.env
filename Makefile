@@ -27,6 +27,10 @@ up-tools:
 	make init
 	docker-compose -f docker-compose-tools.yml up
 
+up-blazorserver:
+	make init
+	docker-compose -f docker-compose-blazorserver.yml up
+
 build:
 	make init
 	docker-compose up --build
@@ -47,6 +51,10 @@ build-tools:
 	make init
 	docker-compose -f docker-compose-tools.yml up  --build
 
+build-blazorserver:
+	make init
+	docker-compose -f docker-compose-blazorserver.yml up  --build
+
 down:
 	docker-compose down
 
@@ -61,3 +69,6 @@ down-pubsub:
 
 down-tools:
 	docker-compose -f docker-compose-tools.yml down
+
+down-blazorserver:
+	docker-compose -f docker-compose-blazorserver.yml down
