@@ -29,6 +29,15 @@ services:
     tty: true
     volumes:
       - "example.js.general:/root"
+  deno:
+    build: ./deno/general
+    environment:
+      GITHUB_USER_NAME: ${GITHUB_USER_NAME}
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+      GITHUB_EMAIL: ${GITHUB_EMAIL}
+    tty: true
+    volumes:
+      - "example.deno.general:/root"
   golang:
     build: ./golang/general
     environment:
@@ -70,6 +79,7 @@ services:
 volumes:
   example.csharp.general:
   example.js.general:
+  example.deno.general:
   example.golang.general:
   example.golang.general.go1.14:
   example.ruby.general:
