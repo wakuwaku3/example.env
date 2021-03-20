@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  tcp-server:
+    build: ./csharp/tcp-server
+    environment:
+      GITHUB_USER_NAME: ${GITHUB_USER_NAME}
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+      GITHUB_EMAIL: ${GITHUB_EMAIL}
+    tty: true
+    volumes:
+      - "example.tcp-server.csharp:/repo"
+  tcp-client:
+    build: ./golang/tcp-client
+    environment:
+      GITHUB_USER_NAME: ${GITHUB_USER_NAME}
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+      GITHUB_EMAIL: ${GITHUB_EMAIL}
+    tty: true
+    volumes:
+      - "example.tcp-client.go:/repo"
+      - "example.tcp-client.go.go1.16:/go"
+volumes:
+  example.tcp-server.csharp:
+  example.tcp-client.go:
+  example.tcp-client.go.go1.16:
+networks:
+  default:
+    external:
+      name: example-env-network
