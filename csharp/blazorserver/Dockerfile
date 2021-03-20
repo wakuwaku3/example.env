@@ -3,6 +3,9 @@ FROM mcr.microsoft.com/dotnet/sdk:5.0
 LABEL Name="example.blazorserver.csharp"
 LABEL Version="1.0.0"
 
+RUN apt update
+RUN apt install -y make
+
 ENV GITHUB_USER_NAME=GITHUB-user-name
 ENV GITHUB_TOKEN=GITHUB-token
 ENV GITHUB_EMAIL=GITHUB-email

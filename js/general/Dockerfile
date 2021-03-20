@@ -1,4 +1,4 @@
-FROM node:12-buster
+FROM node:14-buster
 
 LABEL Name="example.js.general"
 LABEL Version="1.0.0"
