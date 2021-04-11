@@ -9,59 +9,59 @@ init:
 
 up:
 	make init
-	docker-compose up
+	docker-compose up -d
 
 up-db:
 	make init
-	docker-compose -f docker-compose-data.yml up
+	docker-compose -f docker-compose-data.yml up -d
 
 up-vapid:
 	make init
-	docker-compose -f docker-compose-vapid.yml up
+	docker-compose -f docker-compose-vapid.yml up -d
 
 up-pubsub:
 	make init
-	docker-compose -f docker-compose-pubsub.yml up
+	docker-compose -f docker-compose-pubsub.yml up -d
 
 up-tools:
 	make init
-	docker-compose -f docker-compose-tools.yml up
+	docker-compose -f docker-compose-tools.yml up -d
 
 up-blazorserver:
 	make init
-	docker-compose -f docker-compose-blazorserver.yml up
+	docker-compose -f docker-compose-blazorserver.yml -d
 
 up-tcp:
 	make init
-	docker-compose -f docker-compose-tcp.yml up
+	docker-compose -f docker-compose-tcp.yml up -d
 
 build:
 	make init
-	docker-compose up --build
+	docker-compose up --build -d
 
 build-db:
 	make init
-	docker-compose -f docker-compose-data.yml up  --build
+	docker-compose -f docker-compose-data.yml up  --build -d
 
 build-vapid:
 	make init
-	docker-compose -f docker-compose-vapid.yml up  --build
+	docker-compose -f docker-compose-vapid.yml up  --build -d
 
 build-pubsub:
 	make init
-	docker-compose -f docker-compose-pubsub.yml up  --build
+	docker-compose -f docker-compose-pubsub.yml up  --build -d
 
 build-tools:
 	make init
-	docker-compose -f docker-compose-tools.yml up  --build
+	docker-compose -f docker-compose-tools.yml up  --build -d
 
 build-blazorserver:
 	make init
-	docker-compose -f docker-compose-blazorserver.yml up  --build
+	docker-compose -f docker-compose-blazorserver.yml up  --build -d
 
 build-tcp:
 	make init
-	docker-compose -f docker-compose-tcp.yml up  --build
+	docker-compose -f docker-compose-tcp.yml up  --build -d
 
 down:
 	docker-compose down

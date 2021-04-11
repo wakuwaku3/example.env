@@ -53,6 +53,21 @@ services:
     volumes:
       - "example.golang.general:/root"
       - "example.golang.general.go1.14:/go"
+  golang-next:
+    build: ./golang/next
+    environment:
+      GITHUB_USER_NAME: ${GITHUB_USER_NAME}
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+      GITHUB_EMAIL: ${GITHUB_EMAIL}
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: admin_01
+      DB_PASSWORD: password
+      DB_NAME: sample_db_02
+    tty: true
+    volumes:
+      - "example.golang.next:/root"
+      - "example.golang.next.go.1.18:/go"
   ruby:
     build: ./ruby/general
     environment:
@@ -82,6 +97,8 @@ volumes:
   example.deno.general:
   example.golang.general:
   example.golang.general.go1.14:
+  example.golang.next:
+  example.golang.next.go.1.18:
   example.ruby.general:
   example.markdown.general:
 networks:
