@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  dijct:
+    build: ./golang/dijct
+    environment:
+      GITHUB_USER_NAME: ${GITHUB_USER_NAME}
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+      GITHUB_EMAIL: ${GITHUB_EMAIL}
+    tty: true
+    volumes:
+      - "dijct:/root"
+      - "dijct.go.go1.16:/go"
+volumes:
+  dijct:
+  dijct.go.go1.16:
+networks:
+  default:
+    external:
+      name: example-env-network
