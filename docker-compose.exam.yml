@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  exam01:
+    build: ./golang/exam01
+    environment:
+      BACKLOG_USER_NAME: ${BACKLOG_USER_NAME}
+      BACKLOG_TOKEN: ${BACKLOG_TOKEN}
+      BACKLOG_EMAIL: ${BACKLOG_EMAIL}
+      BACKLOG_EMAIL_ENCODED: ${BACKLOG_EMAIL_ENCODED}
+      BACKLOG_API_KEY: ${BACKLOG_API_KEY}
+      BACKLOG_EXAM01_DOMAIN: ${BACKLOG_EXAM01_DOMAIN}
+      BACKLOG_EXAM01_GIT_URL: ${BACKLOG_EXAM01_GIT_URL}
+    tty: true
+    volumes:
+      - "exam01:/repo"
+      - "exam01.go.go1.17:/go"
+volumes:
+  exam01:
+  exam01.go.go1.17:
