@@ -1,4 +1,4 @@
-FROM golang:1.14-buster
+FROM golang:1.17-buster
 
 LABEL Name="example.golang.general"
 LABEL Version="1.0.0"

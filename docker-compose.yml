@@ -52,7 +52,7 @@ services:
     tty: true
     volumes:
       - "example.golang.general:/root"
-      - "example.golang.general.go1.14:/go"
+      - "example.golang.general.go1.17:/go"
   golang-next:
     build: ./golang/next
     environment:
@@ -96,12 +96,8 @@ volumes:
   example.js.general:
   example.deno.general:
   example.golang.general:
-  example.golang.general.go1.14:
+  example.golang.general.go1.17:
   example.golang.next:
   example.golang.next.go.1.18:
   example.ruby.general:
   example.markdown.general:
-networks:
-  default:
-    external:
-      name: example-env-network
