@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  example-ktor:
+    build: ./java/example-ktor
+    environment:
+      GITHUB_USER_NAME: ${GITHUB_USER_NAME}
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+      GITHUB_EMAIL: ${GITHUB_EMAIL}
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: admin_01
+      DB_PASSWORD: password
+      DB_NAME: sample_db_02
+    tty: true
+    volumes:
+      - "example.java.example-ktor:/repo"
+volumes:
+  example.java.example-ktor:
